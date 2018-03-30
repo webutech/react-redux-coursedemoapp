@@ -10,6 +10,7 @@ Author :  Pankaj Sharma
 * [create start script](#create-start-script)
 * [create start message](#create-start-message)
 * [setup eslint](#setup-eslint)
+* [create parallel script](#create-parallel-script)
 
 
 
@@ -87,3 +88,17 @@ ESLint is a tool for identifying and reporting on patterns found in ECMAScript/J
  }
 ```
 - to run the watch script you need to run below command : [npm run lint:watch]
+
+## create parallel script
+- Till now we are just writing separate command to run each script. like for running linting we have separate command, running it in watch mode, we have different command. now here we want to run one command and every thing should run.
+- make below changes in the script section of package.json file
+```
+"scripts": {
+  "prestart":"babel-node tools/startMessage.js",
+  "start":"npm-run-all --parallel open:src lint:watch",
+  "open:src":"babel-node tools/srcServer.js",
+  "lint": "node_modules/.bin/esw webpack.config.* src tools",
+  "lint:watch": "npm run lint -- --watch"
+ }
+```
+- start command is used to run the multiple commands. like it will run open:src and lint:watch and so i have added the srcServer.js related command in open:src entry.
