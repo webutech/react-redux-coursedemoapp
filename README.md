@@ -4,8 +4,9 @@ Author :  Pankaj Sharma
 
 * [package.json configuration](#package.json-configuration)
 * [webpack setup](#webpack-setup)
-* [setup editorconfig](#setup editorconfig)
-* [setup babel](#setup babel)
+* [setup editorconfig](#setup-editorconfig)
+* [setup babel](#setup-babel)
+* [setup express](#setup-express)
 
 ## package.json configuration
 - Create package.json file in the root folder.
@@ -28,4 +29,8 @@ webpack is a static module bundler for modern JavaScript applications. When webp
 ## setup babel
 - Create (.babelrc) file in the root of your application
 - Copy and paste the code from the respective file
-- 
+
+## setup express
+- Create (tools) folder in the root of your application
+- Copy and paste the code from the respective file.
+- Taken the reference from *[express ref] (https://expressjs.com/)
