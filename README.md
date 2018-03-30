@@ -9,6 +9,7 @@ Author :  Pankaj Sharma
 * [setup express](#setup-express)
 * [create start script](#create-start-script)
 * [create start message](#create-start-message)
+* [setup eslint](#setup-eslint)
 
 
 
@@ -59,3 +60,30 @@ now run the [npm start] command on the terminal window
  }
 ```
 - now run the application and check the browser.
+
+## setup eslint
+ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code, with the goal of making code more consistent and avoiding bugs. In many ways
+- Taken from *[eslint ref] (https://eslint.org/docs/user-guide/getting-started)
+- Create (.eslintrc) file in the root of your application and copy and paste the related code in this file
+- Add lint option in the script section of package.json, refer below code.
+```
+"scripts": {
+  "prestart":"babel-node tools/startMessage.js",
+  "start":"babel-node tools/srcServer.js",
+  "lint": "node_modules/.bin/esw webpack.config.* src tools"
+ }
+```
+- to check whether eslint is working. go to terminal window and type [npm run lint] command
+- you will be getting one warning for index.js file.
+- comment the console.log statement in index.js and run again.
+- now you should get clean as output
+- add lint:watch entry, refer code below
+```
+"scripts": {
+  "prestart":"babel-node tools/startMessage.js",
+  "start":"babel-node tools/srcServer.js",
+  "lint": "node_modules/.bin/esw webpack.config.* src tools",
+  "lint:watch": "npm run lint -- --watch"
+ }
+```
+- to run the watch script you need to run below command : [npm run lint:watch]
