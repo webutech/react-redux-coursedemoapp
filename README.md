@@ -11,6 +11,8 @@ Author :  Pankaj Sharma
 * [create start message](#create-start-message)
 * [setup eslint](#setup-eslint)
 * [create parallel script](#create-parallel-script)
+* [setup testing](#setup-testing)
+* [add test script](#add-test-script)
 
 
 
@@ -102,3 +104,37 @@ ESLint is a tool for identifying and reporting on patterns found in ECMAScript/J
  }
 ```
 - start command is used to run the multiple commands. like it will run open:src and lint:watch and so i have added the srcServer.js related command in open:src entry.
+
+## setup testing
+- Create testSetup.js file in tools folder and copy and paste the code from related file in your file.
+
+
+## add test script
+- add test:mocha entry in your package.json file in the script section. follow the below code.
+```
+"scripts": {
+  "prestart":"babel-node tools/startMessage.js",
+  "start":"npm-run-all --parallel open:src lint:watch",
+  "open:src":"babel-node tools/srcServer.js",
+  "lint": "node_modules/.bin/esw webpack.config.* src tools",
+  "lint:watch": "npm run lint -- --watch",
+  "test": "mocha --reporter progress tools/testSetup.js \"src/**/*.test.js\""
+ }
+```
+- now run [npm test] command and now it should be failed. because it will tell us that we should have .test.js file in the src directory, which is not available. so create one [index.test.js] file in the src directory.
+- copy and paste the code from the respective file and run the [npm test] command once again and now it should pass the test
+- we do not want to run the tests manually, so we need to configure the test script in watch mode like lint:watch in package.json.
+- make below entry in the package.json. we also need to add test:watch entry in the start option.  Refer the below code for complete detail
+```
+"scripts": {
+  "prestart":"babel-node tools/startMessage.js",
+  "start":"npm-run-all --parallel open:src lint:watch test:watch",
+  "open:src":"babel-node tools/srcServer.js",
+  "lint": "node_modules/.bin/esw webpack.config.* src tools",
+  "lint:watch": "npm run lint -- --watch",
+  "test": "mocha --reporter progress tools/testSetup.js \"src/**/*.test.js\"",
+  "test:watch":"npm run test -- --watch"
+ }
+```
+
+Note :  if you pull this repository, run the npm install command on your terminal window.
