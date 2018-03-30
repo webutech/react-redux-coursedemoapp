@@ -1,8 +1,11 @@
 {
-  "name": "react-redux-courseapp",
+  "name": "react-redux-coursedemoapp",
   "version": "1.0.0",
   "description": "Starter kit for React and Redux coursedemoapp created by Pankaj sharma",
-  "scripts": { },
+  "scripts": {
+    "prestart":"babel-node tools/startMessage.js",
+    "start":"babel-node tools/srcServer.js"
+   },
   "author": "Pankaj Sharma",
   "license": "MIT",
   "dependencies": {
@@ -16,7 +19,6 @@
     "react-router-redux": "4.0.8",
     "redux": "3.7.2",
     "redux-thunk": "2.2.0",
-    "toastr": "2.1.4"
     "toastr": "2.1.2"
   },
   "devDependencies": {
