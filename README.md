@@ -8,6 +8,9 @@ Author :  Pankaj Sharma
 * [setup babel](#setup-babel)
 * [setup express](#setup-express)
 * [create start script](#create-start-script)
+* [create start message](#create-start-message)
+
+
 
 ## package.json configuration
 - Create package.json file in the root folder.
@@ -43,4 +46,16 @@ webpack is a static module bundler for modern JavaScript applications. When webp
   "start":"babel-node tools/srcServer.js"
  }
 ```
-now run the npm start command on the terminal window
+now run the [npm start] command on the terminal window
+
+## create start message
+- Here we will be configuring start message that will be displayed when you will run your application.
+- create (startMessage.js) file in the tools folder and copy and paste the code from the respective folder.
+- add the prestart entry in the scripts section of package.json file
+```
+"scripts": {
+  "prestart":"babel-node tools/startMessage.js",
+  "start":"babel-node tools/srcServer.js"
+ }
+```
+- now run the application and check the browser.
