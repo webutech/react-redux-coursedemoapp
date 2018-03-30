@@ -7,6 +7,7 @@ Author :  Pankaj Sharma
 * [setup editorconfig](#setup-editorconfig)
 * [setup babel](#setup-babel)
 * [setup express](#setup-express)
+* [create start script](#create-start-script)
 
 ## package.json configuration
 - Create package.json file in the root folder.
@@ -34,3 +35,12 @@ webpack is a static module bundler for modern JavaScript applications. When webp
 - Create (tools) folder in the root of your application
 - Copy and paste the code from the respective file.
 - Taken the reference from *[express ref] (https://expressjs.com/)
+
+## create start script
+- add below code in the script property in the package.json file
+```
+"scripts": {
+  "start":"babel-node tools/srcServer.js"
+ }
+```
+now run the npm start command on the terminal window
